@@ -18,10 +18,11 @@ router.post("/run", (req, res) => {
   axios(config)
     .then(function (response) {
       console.log(JSON.stringify(response.data));
-      return res.status(201).send({ output: response.data.output });
+      return res.status(201).send({ output: response.data.output || response.data.error });
     })
     .catch(function (error) {
       console.log(error);
+      return res.status(400).send({ output: error });
     });
 
 });

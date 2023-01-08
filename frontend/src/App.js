@@ -4,9 +4,7 @@ import axios from "axios";
 
 // Project Imports
 import CodeEditor from "./Components/CodeEditor";
-import InputEditor from "./Components/Input";
-import OutputLogs from "./Components/Output";
-import Header from "./Components/Header";
+import InputOutputEditor from "./Components/Input-Output";
 import "./styles.css";
 
 const App = () => {
@@ -21,34 +19,38 @@ const App = () => {
   const runCode = () => {
     setStatus("Loading...");
     axios.post("/run", { language, code, input }).then((res) => {
-      // if (res.data.memory && res.data.cpuTime) {
-      //   setOutputLogs("");
-      //   setOutputLogs(
-      //     `Memory Used: ${res.data.memory} \nCPU Time: ${res.data.cpuTime} \n${res.data.output} `
-      //   );
-      // } else {
+      if (res.data.memory && res.data.cpuTime) {
+        setOutputLogs("");
+        setOutputLogs(
+          `Memory Used: ${res.data.memory} \nCPU Time: ${res.data.cpuTime} \n${res.data.output} `
+        );
+      } else {
         setOutputLogs(`${res.data.output} `);
-      // }
+      }
       setStatus("Run");
     });
   };
 
   return (
     <div style={{ height: "100%", width: "100%" }}>
-      <Header
-        value={language}
-        status={status}
-        runCode={() => runCode()}
-        onChangeLanguage={({ value }) => setLanguage(value)}
-      />
+      <div style={{ textAlign: "center", fontFamily: "Rockwell" }}>
+        <h2>Online Code Compiler</h2>
+      </div>
       <CodeEditor
+        language={language}
+        onChangeLanguage={({ value }) => setLanguage(value)}
         value={code}
         onCodeChange={(text) => setCode(text)}
         programmingLanguage={language}
+        status={status}
+        runCode={() => runCode()}
       />
       <div className="optionSegment">
-        <InputEditor value={input} onInputChange={(text) => setInput(text)} />
-        <OutputLogs value={outputLogs} />
+        <InputOutputEditor
+          inputValue={input}
+          onInputChange={(text) => setInput(text)}
+          outputValue={outputLogs}
+        />
       </div>
     </div>
   );
