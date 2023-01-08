@@ -20,6 +20,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
+## Screenshots
+![2.png](imgs/2.jpg)
+![1.png](imgs/1.jpg)
+
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
@@ -45,9 +50,6 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Screenshots
-![2.png](imgs/2.jpg)
-![1.png](imgs/1.jpg)
 
 ## Learn More
 
