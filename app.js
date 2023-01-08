@@ -1,4 +1,6 @@
 express = require('express');
+require("dotenv").config({path:"config.env"})
+
 app=express();
 
 app.get('/', (req, res) => {
